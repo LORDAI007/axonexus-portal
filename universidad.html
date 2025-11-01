@@ -17,6 +17,7 @@
       color: #f7c948;
       font-size: 2.8rem;
       margin-bottom: 0.5em;
+      text-shadow: 0 0 12px rgba(247, 201, 72, 0.45);
     }
     h2 {
       color: #ccc;
@@ -37,10 +38,11 @@
       border-radius: 12px;
       padding: 25px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 8px rgba(247, 201, 72, 0.08);
     }
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 12px rgba(247, 201, 72, 0.3);
+      box-shadow: 0 0 14px rgba(247, 201, 72, 0.35);
     }
     .card h3 {
       color: #fff;
@@ -59,11 +61,12 @@
       border-radius: 10px;
       color: #f7c948;
       background: transparent;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
     .btn:hover {
       background-color: #f7c948;
       color: #000;
+      box-shadow: 0 0 16px rgba(247, 201, 72, 0.6);
     }
     footer {
       margin-top: 40px;
@@ -81,6 +84,7 @@
     .instituto h2 {
       color: #f7c948;
       margin-bottom: 10px;
+      text-shadow: 0 0 8px rgba(247, 201, 72, 0.4);
     }
     .instituto p {
       color: #ccc;
@@ -93,18 +97,25 @@
       margin-top: 50px;
       padding: 12px 22px;
       border-radius: 10px;
-      border: 1px solid #444;
-      color: #fff;
+      border: 1px solid #f7c948;
+      color: #f7c948;
       background-color: #111;
-      transition: all 0.3s ease;
       font-weight: 600;
       letter-spacing: 0.5px;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 16px rgba(247, 201, 72, 0.35);
+      animation: pulseGlow 3s infinite ease-in-out;
     }
     .return:hover {
       background-color: #f7c948;
       color: #000;
-      border-color: #f7c948;
-      box-shadow: 0 0 10px rgba(247, 201, 72, 0.4);
+      box-shadow: 0 0 24px rgba(247, 201, 72, 0.6);
+      transform: scale(1.03);
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 12px rgba(247, 201, 72, 0.3); }
+      50% { box-shadow: 0 0 24px rgba(247, 201, 72, 0.6); }
+      100% { box-shadow: 0 0 12px rgba(247, 201, 72, 0.3); }
     }
   </style>
 </head>
