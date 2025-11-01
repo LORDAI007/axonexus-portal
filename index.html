@@ -6,71 +6,45 @@
   <title>AXONEXUS — Imperio de la Gobernanza Predictiva</title>
   <meta name="description" content="Datasets soberanos, ETLs y APIs; Prensa IA; Marco Legal; Supra-Human Data University." />
   <style>
-    :root{
-      --bg:#0a0a0a; --fg:#ffffff; --muted:#c7c7c7; --gold:#f7c948; --card:#121212; --stroke:#1f1f1f;
-    }
+    :root{ --bg:#0a0a0a; --fg:#ffffff; --muted:#c7c7c7; --gold:#f7c948; --card:#121212; --stroke:#1f1f1f; }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Ubuntu,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     /* Top bar */
-    .topbar{
-      position:fixed; inset:0 0 auto 0; height:56px; display:flex; align-items:center;
-      padding:0 16px; background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0));
-      z-index:40;
-    }
+    .topbar{ position:fixed; inset:0 0 auto 0; height:56px; display:flex; align-items:center;
+      padding:0 16px; background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0)); z-index:40; }
     .brand{font-weight:800; letter-spacing:.6px}
     .brand .gold{color:var(--gold)}
     .spacer{flex:1}
-    .icon-btn{
-      width:40px;height:40px;border:1px solid var(--stroke); display:grid; place-items:center; border-radius:10px; background:#0f0f0f;
-    }
+    .icon-btn{ width:40px;height:40px;border:1px solid var(--stroke); display:grid; place-items:center; border-radius:10px; background:#0f0f0f; }
     .burger{width:18px;height:2px;background:var(--fg); position:relative}
     .burger:before,.burger:after{content:""; position:absolute; left:0; width:18px; height:2px; background:var(--fg)}
     .burger:before{top:-6px}.burger:after{top:6px}
-
-    /* Drawer (menú lateral) */
+    /* Drawer */
     .scrim{position:fixed; inset:0; background:#0008; opacity:0; pointer-events:none; transition:.25s; z-index:48}
-    .drawer{
-      position:fixed; top:0; left:0; height:100vh; width:300px; max-width:86vw;
-      background:#0d0d0d; border-right:1px solid var(--stroke);
-      transform:translateX(-100%); transition:.3s ease; z-index:50; padding:18px;
-    }
+    .drawer{ position:fixed; top:0; left:0; height:100vh; width:300px; max-width:86vw; background:#0d0d0d; border-right:1px solid var(--stroke);
+      transform:translateX(-100%); transition:.3s ease; z-index:50; padding:18px; }
     .drawer.open{transform:none}
     .scrim.show{opacity:1; pointer-events:auto}
     .nav-title{font-weight:800; margin:2px 0 14px}
     .nav-section{margin:14px 0 8px; color:var(--muted); font-size:.9rem}
-    .nav a{
-      display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; border:1px solid var(--stroke);
-      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)); margin-bottom:10px;
-    }
+    .nav a{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; border:1px solid var(--stroke);
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)); margin-bottom:10px; }
     .dot{width:8px;height:8px;border-radius:50%; background:var(--gold); box-shadow:0 0 10px #f7c94877}
-
     /* Hero + grid */
     .wrap{max-width:1100px; margin:0 auto; padding:84px 18px 32px}
     h1{font-size:clamp(28px,6vw,64px); margin:8px 0 10px}
     p.lead{opacity:.9; line-height:1.6; max-width:880px}
-    .grid{
-      display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      margin:26px 0 0;
-    }
-    .card{
-      border:1px solid var(--stroke); background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
-      padding:18px; border-radius:14px; min-height:140px; display:flex; flex-direction:column; justify-content:space-between;
-    }
+    .grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin:26px 0 0; }
+    .card{ border:1px solid var(--stroke); background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+      padding:18px; border-radius:14px; min-height:140px; display:flex; flex-direction:column; justify-content:space-between; }
     .card strong{font-weight:700}
-    .btn{
-      display:inline-block; margin-top:12px; padding:10px 14px; border-radius:10px; border:1px solid var(--stroke);
-      transition:.25s; background:#101010; color:var(--fg)
-    }
+    .btn{ display:inline-block; margin-top:12px; padding:10px 14px; border-radius:10px; border:1px solid var(--stroke);
+      transition:.25s; background:#101010; color:var(--fg) }
     .btn:hover{border-color:var(--gold); color:var(--gold); box-shadow:0 0 12px #f7c94855}
     .gold{color:var(--gold)}
     footer{margin:36px 0 0; opacity:.6; font-size:.92rem}
-
-    /* Desktop polish */
-    @media (min-width:920px){
-      .topbar{height:64px; padding:0 24px}
-      .icon-btn{display:none} /* ocultamos burger en desktop si no lo necesitas */
-    }
+    @media (min-width:920px){ .topbar{height:64px; padding:0 24px} .icon-btn{display:none} }
   </style>
 </head>
 <body>
@@ -78,9 +52,7 @@
   <header class="topbar">
     <div class="brand"><span class="gold">AXONEXUS</span> — Imperio</div>
     <div class="spacer"></div>
-    <button class="icon-btn" id="openNav" aria-label="Abrir menú">
-      <span class="burger"></span>
-    </button>
+    <button class="icon-btn" id="openNav" aria-label="Abrir menú"><span class="burger"></span></button>
   </header>
 
   <!-- Drawer -->
@@ -94,7 +66,7 @@
       <div class="nav-section">Legitimidad</div>
       <a href="#" aria-disabled="true"><span class="dot"></span> Marco Legal Estratégico</a>
       <div class="nav-section">Legado</div>
-      <a href="sections/universidad.html"><span class="dot"></span> Supra-Human Data University</a>
+      <a href="universidad.html"><span class="dot"></span> Supra-Human Data University</a>
       <div class="nav-section">Estado</div>
       <a href="healthz.html"><span class="dot"></span> Health / Status</a>
       <a href="/" style="margin-top:8px"><span class="dot"></span> Inicio</a>
@@ -130,7 +102,7 @@
         <div class="card">
           <strong>Supra-Human Data University</strong>
           <p style="opacity:.85;margin:6px 0 0">Formación élite post-AGI.</p>
-          <a class="btn" href="sections/universidad.html">Ingresar</a>
+          <a class="btn" href="universidad.html">Ingresar</a>
         </div>
       </div>
 
@@ -142,13 +114,12 @@
     const drawer = document.getElementById('drawer');
     const scrim  = document.getElementById('scrim');
     const openBtn= document.getElementById('openNav');
-
     function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('show'); scrim.setAttribute('aria-hidden','false'); }
     function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('show'); scrim.setAttribute('aria-hidden','true'); }
-
     openBtn.addEventListener('click', openDrawer);
     scrim.addEventListener('click', closeDrawer);
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
   </script>
 </body>
 </html>
+
