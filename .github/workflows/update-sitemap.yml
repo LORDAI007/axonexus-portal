@@ -8,6 +8,9 @@ on:
       - 'sitemap.xml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
@@ -28,9 +31,30 @@ jobs:
           echo "✅ sitemap.xml actualizado con fecha ${TODAY}"
 
       - name: Commit updated sitemap
+        id: commit
         run: |
+          set -e
           git config user.name "AxonexusBot"
           git config user.email "actions@axonexus.net"
-          git add sitemap.xml
-          git commit -m "chore(sitemap): auto-update lastmod to $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
-          git push
+          if git diff --quiet sitemap.xml; then
+            echo "⚪ No hay cambios que commitear."
+            echo "pushed=false" >> $GITHUB_OUTPUT
+          else
+            git add sitemap.xml
+            git commit -m "chore: auto-update sitemap lastmod [skip ci]"
+            git push
+            echo "✅ Cambios pusheados."
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Notify search engines (Google & Bing)
+        if: steps.commit.outputs.pushed == 'true'
+        run: |
+          # Reintentos por si el hosting tarda unos segundos en publicar
+          for i in {1..5}; do
+            curl -fsS "https://www.google.com/ping?sitemap=https://axonexus.net/sitemap.xml" && break || sleep 5
+          done
+          for i in {1..5}; do
+            curl -fsS "https://www.bing.com/ping?sitemap=https://axonexus.net/sitemap.xml" && break || sleep 5
+          done
+          echo "📡 Notificación enviada a Google y Bing."
