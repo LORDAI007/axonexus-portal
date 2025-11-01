@@ -3,11 +3,9 @@ name: Auto Update Sitemap (Axonexus)
 on:
   push:
     branches: [ main ]
-    # Solo corre cuando cambian HTML (o el propio sitemap)
     paths:
       - '**/*.html'
       - 'sitemap.xml'
-  # Permite ejecutarlo manualmente desde la pestaña Actions
   workflow_dispatch:
 
 jobs:
@@ -22,11 +20,12 @@ jobs:
         run: |
           set -e
           if [ ! -f sitemap.xml ]; then
-            echo "sitemap.xml no existe en la raíz del repo"; exit 1
+            echo "❌ sitemap.xml no existe en la raíz del repo"
+            exit 1
           fi
           TODAY="$(date -u +'%Y-%m-%d')"
-          # Reemplaza TODAS las etiquetas <lastmod>...</lastmod> por la fecha de hoy (UTC)
           sed -i "s|<lastmod>[^<]*</lastmod>|<lastmod>${TODAY}</lastmod>|g" sitemap.xml
+          echo "✅ sitemap.xml actualizado con fecha ${TODAY}"
 
       - name: Commit updated sitemap
         run: |
