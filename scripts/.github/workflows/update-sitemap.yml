@@ -1,0 +1,55 @@
+name: Auto Update Sitemap (Axonexus)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.html'
+      - 'scripts/generate_sitemap.py'
+      - '.github/workflows/update-sitemap.yml'
+      - 'robots.txt'
+  schedule:
+    - cron: '17 3 * * 2'   # martes 03:17 UTC (ajústalo si deseas)
+  workflow_dispatch:
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate sitemap.xml
+        run: |
+          python scripts/generate_sitemap.py
+
+      - name: Commit sitemap if changed
+        id: commit_step
+        run: |
+          if git diff --quiet -- sitemap.xml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "🟡 No hay cambios en sitemap.xml"
+          else
+            git config user.name  "AxonexusBot"
+            git config user.email "actions@axonexus.net"
+            git add sitemap.xml
+            git commit -m "chore(sitemap): auto-regenerate [skip ci]"
+            git push
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "🟢 Cambios detectados y publicados."
+          fi
+
+      - name: Notify search engines (Google & Bing)
+        if: steps.commit_step.outputs.changed == 'true'
+        run: |
+          set -e
+          curl -fsS "https://www.google.com/ping?sitemap=https://axonexus.net/sitemap.xml"  -o /dev/null && echo "📡 Ping Google OK"
+          curl -fsS "https://www.bing.com/ping?sitemap=https://axonexus.net/sitemap.xml"    -o /dev/null && echo "📡 Ping Bing OK"
