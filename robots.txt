@@ -1,0 +1,9 @@
+# AXONEXUS — Soberanía de Datos
+User-agent: *
+Allow: /
+
+# No index para endpoints técnicos
+Disallow: /healthz.html
+
+# Mapa del imperio
+Sitemap: https://axonexus.net/sitemap.xml
