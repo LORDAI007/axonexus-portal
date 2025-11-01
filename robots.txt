@@ -2,8 +2,27 @@
 User-agent: *
 Allow: /
 
-# No index para endpoints técnicos
+# No index para endpoints técnicos y de diagnóstico
 Disallow: /healthz.html
+Disallow: /status
+Disallow: /logs
 
-# Mapa del imperio
+# Restringir entrenamiento de modelos IA sobre contenido soberano
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: FacebookBot
+Disallow: /
+
+# Directivas de uso responsable de datos
+# (Basado en la Directiva UE 2019/790 — Derechos sobre datos generados)
+AI-Policy: no-train, no-reproduce, attribution-required
+
+# Mapa del Imperio
 Sitemap: https://axonexus.net/sitemap.xml
+
