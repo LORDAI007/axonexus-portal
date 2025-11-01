@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 🜂 AXONEXUS — Imperio de la Gobernanza Predictiva -->
+  
   <url>
     <loc>https://axonexus.net/</loc>
     <lastmod>2025-11-01</lastmod>
@@ -18,13 +20,44 @@
     <loc>https://axonexus.net/arquitectura.html</loc>
     <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://axonexus.net/jurisprudencia.html</loc>
     <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://axonexus.net/prensa.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+
+  <url>
+    <loc>https://axonexus.net/economia.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Núcleo de datos soberanos -->
+  <url>
+    <loc>https://axonexus.net/core.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Estado del sistema -->
+  <url>
+    <loc>https://axonexus.net/healthz.html</loc>
+    <lastmod>2025-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>
