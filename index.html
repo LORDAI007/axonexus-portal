@@ -1,81 +1,64 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>AXONEXUS — Imperio de la Gobernanza Predictiva</title>
-  <meta name="description" content="Datasets soberanos, ETLs y APIs; Prensa IA; Marco Legal; Supra-Human Data University." />
+  <link rel="canonical" href="https://axonexus.net/"/>
+  <meta name="description" content="Imperio de Gobernanza Predictiva: datasets soberanos, ETLs, APIs, Prensa IA, Marco Legal y Supra-Human Data University."/>
+  <meta property="og:title" content="AXONEXUS — Imperio de la Gobernanza Predictiva"/>
+  <meta property="og:description" content="Corazón Soberano de datos, infraestructura y poder narrativo."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://axonexus.net/"/>
+  <meta property="og:image" content="https://axonexus.net/assets/og.jpg"/>
+  <meta name="theme-color" content="#0a0a0a"/>
+  <link rel="icon" href="/assets/favicon.png" type="image/png"/>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Axonexus",
+    "url":"https://axonexus.net",
+    "logo":"https://axonexus.net/assets/favicon.png",
+    "sameAs":[]
+  }
+  </script>
   <style>
-    :root{
-      --bg:#0a0a0a; --fg:#ffffff; --muted:#c7c7c7; --gold:#f7c948; --card:#121212; --stroke:#1f1f1f;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Ubuntu,Arial,sans-serif}
+    :root{--bg:#0a0a0a;--fg:#fff;--muted:#c7c7c7;--gold:#f7c948;--card:#121212;--stroke:#1f1f1f}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Ubuntu,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
-    /* Top bar */
-    .topbar{
-      position:fixed; inset:0 0 auto 0; height:56px; display:flex; align-items:center;
-      padding:0 16px; background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,0));
-      z-index:40;
-    }
-    .brand{font-weight:800; letter-spacing:.6px}
-    .brand .gold{color:var(--gold)}
-    .spacer{flex:1}
-    .icon-btn{
-      width:40px;height:40px;border:1px solid var(--stroke); display:grid; place-items:center; border-radius:10px; background:#0f0f0f;
-    }
-    .burger{width:18px;height:2px;background:var(--fg); position:relative}
-    .burger:before,.burger:after{content:""; position:absolute; left:0; width:18px; height:2px; background:var(--fg)}
-    .burger:before{top:-6px}.burger:after{top:6px}
-
-    /* Drawer (menú lateral) */
-    .scrim{position:fixed; inset:0; background:#0008; opacity:0; pointer-events:none; transition:.25s; z-index:48}
-    .drawer{
-      position:fixed; top:0; left:0; height:100vh; width:300px; max-width:86vw;
-      background:#0d0d0d; border-right:1px solid var(--stroke);
-      transform:translateX(-100%); transition:.3s ease; z-index:50; padding:18px;
-    }
-    .drawer.open{transform:none}
-    .scrim.show{opacity:1; pointer-events:auto}
-    .nav-title{font-weight:800; margin:2px 0 14px}
-    .nav-section{margin:14px 0 8px; color:var(--muted); font-size:.9rem}
-    .nav a{
-      display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; border:1px solid var(--stroke);
-      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01)); margin-bottom:10px;
-    }
-    .dot{width:8px;height:8px;border-radius:50%; background:var(--gold); box-shadow:0 0 10px #f7c94877}
-
-    /* Hero + grid */
-    .wrap{max-width:1100px; margin:0 auto; padding:84px 18px 32px}
-    h1{font-size:clamp(28px,6vw,64px); margin:8px 0 10px}
-    p.lead{opacity:.9; line-height:1.6; max-width:880px}
-    .grid{
-      display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      margin:26px 0 0;
-    }
-    .card{
-      border:1px solid var(--stroke); background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
-      padding:18px; border-radius:14px; min-height:140px; display:flex; flex-direction:column; justify-content:space-between;
-    }
-    .card strong{font-weight:700}
-    .btn{
-      display:inline-block; margin-top:12px; padding:10px 14px; border-radius:10px; border:1px solid var(--stroke);
-      transition:.25s; background:#101010; color:var(--fg)
-    }
-    .btn:hover{border-color:var(--gold); color:var(--gold); box-shadow:0 0 12px #f7c94855}
-    .gold{color:var(--gold)}
-    footer{margin:36px 0 0; opacity:.6; font-size:.92rem}
-
-    /* Desktop polish */
-    @media (min-width:920px){
-      .topbar{height:64px; padding:0 24px}
-      .icon-btn{display:none}
-    }
+    .topbar{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;gap:12px;padding:0 20px;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0));z-index:40}
+    .brand{font-weight:800;letter-spacing:.6px}.brand .gold{color:var(--gold)}
+    .spacer{flex:1}.icon-btn{width:40px;height:40px;border:1px solid var(--stroke);display:grid;place-items:center;border-radius:10px;background:#0f0f0f}
+    .burger,.burger:before,.burger:after{width:18px;height:2px;background:#fff;position:relative;display:block;content:""} .burger:before{position:absolute;left:0;top:-6px}.burger:after{position:absolute;left:0;top:6px}
+    .wrap{max-width:1100px;margin:0 auto;padding:96px 18px 36px}
+    h1{font-size:clamp(28px,6vw,64px);margin:8px 0 10px}
+    .lead{opacity:.9;line-height:1.6;max-width:880px}
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:26px 0 0}
+    .card{border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));padding:18px;border-radius:14px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+    .card:hover{box-shadow:0 0 14px rgba(247,201,72,.25)}
+    .btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;border:1px solid var(--stroke);transition:.25s;background:#101010;color:#fff}
+    .btn:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px #f7c94855}
+    .gold{color:var(--gold)} footer{margin:36px 0 0;opacity:.6;font-size:.92rem}
+    .scrim{position:fixed;inset:0;background:#0008;opacity:0;pointer-events:none;transition:.25s;z-index:48}
+    .drawer{position:fixed;top:0;left:0;height:100vh;width:300px;max-width:86vw;background:#0d0d0d;border-right:1px solid var(--stroke);transform:translateX(-100%);transition:.3s ease;z-index:50;padding:18px}
+    .drawer.open{transform:none}.scrim.show{opacity:1;pointer-events:auto}
+    .nav-title{font-weight:800;margin:2px 0 14px}.nav-section{margin:14px 0 8px;color:var(--muted);font-size:.9rem}
+    .nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));margin-bottom:10px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px #f7c94877}
+    @media (min-width:920px){.icon-btn{display:none}}
   </style>
+  <!-- Analytics mínimo (PageViews) -->
+  <script>
+    (function(){ try{
+      const t='axnx_pv', now=Date.now(); let s=localStorage.getItem(t);
+      localStorage.setItem(t, s? (+s+1) : 1);
+      console.log('AXONEXUS pageview', now);
+    }catch(e){} })();
+  </script>
 </head>
 <body>
-  <!-- Top bar -->
-  <header class="topbar">
+  <header class="topbar" aria-label="Barra superior">
     <div class="brand"><span class="gold">AXONEXUS</span> — Imperio</div>
     <div class="spacer"></div>
     <button class="icon-btn" id="openNav" aria-label="Abrir menú">
@@ -83,7 +66,6 @@
     </button>
   </header>
 
-  <!-- Drawer -->
   <aside class="drawer" id="drawer" aria-hidden="true">
     <div class="nav-title"><span class="gold">Axonexus</span> • Capas</div>
     <div class="nav">
@@ -94,7 +76,7 @@
       <div class="nav-section">Legitimidad</div>
       <a href="#" aria-disabled="true"><span class="dot"></span> Marco Legal Estratégico</a>
       <div class="nav-section">Legado</div>
-      <a href="/universidad.html"><span class="dot"></span> Supra-Human Data University</a>
+      <a href="/sections/universidad.html"><span class="dot"></span> Supra-Human Data University</a>
       <div class="nav-section">Estado</div>
       <a href="/healthz.html"><span class="dot"></span> Health / Status</a>
       <a href="/" style="margin-top:8px"><span class="dot"></span> Inicio</a>
@@ -102,7 +84,6 @@
   </aside>
   <div class="scrim" id="scrim" aria-hidden="true"></div>
 
-  <!-- Main -->
   <main class="wrap">
     <section>
       <h1><span class="gold">AXONEXUS</span> — Imperio de la Gobernanza Predictiva</h1>
@@ -130,7 +111,7 @@
         <div class="card">
           <strong>Supra-Human Data University</strong>
           <p style="opacity:.85;margin:6px 0 0">Formación élite post-AGI.</p>
-          <a class="btn" href="/universidad.html">Ingresar</a>
+          <a class="btn" href="/sections/universidad.html">Ingresar</a>
         </div>
       </div>
 
@@ -139,18 +120,13 @@
   </main>
 
   <script>
-    const drawer = document.getElementById('drawer');
-    const scrim  = document.getElementById('scrim');
-    const openBtn= document.getElementById('openNav');
-
-    function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); scrim.classList.add('show'); scrim.setAttribute('aria-hidden','false'); }
-    function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); scrim.classList.remove('show'); scrim.setAttribute('aria-hidden','true'); }
-
-    openBtn.addEventListener('click', openDrawer);
-    scrim.addEventListener('click', closeDrawer);
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+    const drawer=document.getElementById('drawer');
+    const scrim=document.getElementById('scrim');
+    const openBtn=document.getElementById('openNav');
+    function openDrawer(){drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');scrim.classList.add('show');scrim.setAttribute('aria-hidden','false')}
+    function closeDrawer(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');scrim.classList.remove('show');scrim.setAttribute('aria-hidden','true')}
+    openBtn.addEventListener('click',openDrawer);scrim.addEventListener('click',closeDrawer);
+    window.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
   </script>
 </body>
 </html>
-
-
