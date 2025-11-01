@@ -48,22 +48,19 @@
     .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px #f7c94877}
     @media (min-width:920px){.icon-btn{display:none}}
   </style>
-  <!-- Analytics mínimo (PageViews) -->
   <script>
-    (function(){ try{
-      const t='axnx_pv', now=Date.now(); let s=localStorage.getItem(t);
-      localStorage.setItem(t, s? (+s+1) : 1);
-      console.log('AXONEXUS pageview', now);
-    }catch(e){} })();
+    (function(){try{
+      const t='axnx_pv',now=Date.now();let s=localStorage.getItem(t);
+      localStorage.setItem(t,s?(+s+1):1);
+      console.log('AXONEXUS pageview',now);
+    }catch(e){}})();
   </script>
 </head>
 <body>
   <header class="topbar" aria-label="Barra superior">
     <div class="brand"><span class="gold">AXONEXUS</span> — Imperio</div>
     <div class="spacer"></div>
-    <button class="icon-btn" id="openNav" aria-label="Abrir menú">
-      <span class="burger"></span>
-    </button>
+    <button class="icon-btn" id="openNav" aria-label="Abrir menú"><span class="burger"></span></button>
   </header>
 
   <aside class="drawer" id="drawer" aria-hidden="true">
@@ -76,10 +73,10 @@
       <div class="nav-section">Legitimidad</div>
       <a href="#" aria-disabled="true"><span class="dot"></span> Marco Legal Estratégico</a>
       <div class="nav-section">Legado</div>
-      <a href="/sections/universidad.html"><span class="dot"></span> Supra-Human Data University</a>
+      <a href="universidad.html"><span class="dot"></span> Supra-Human Data University</a>
       <div class="nav-section">Estado</div>
-      <a href="/healthz.html"><span class="dot"></span> Health / Status</a>
-      <a href="/" style="margin-top:8px"><span class="dot"></span> Inicio</a>
+      <a href="healthz.html"><span class="dot"></span> Health / Status</a>
+      <a href="index.html" style="margin-top:8px"><span class="dot"></span> Inicio</a>
     </div>
   </aside>
   <div class="scrim" id="scrim" aria-hidden="true"></div>
@@ -111,7 +108,7 @@
         <div class="card">
           <strong>Supra-Human Data University</strong>
           <p style="opacity:.85;margin:6px 0 0">Formación élite post-AGI.</p>
-          <a class="btn" href="/sections/universidad.html">Ingresar</a>
+          <a class="btn" href="universidad.html">Ingresar</a>
         </div>
       </div>
 
@@ -130,3 +127,4 @@
   </script>
 </body>
 </html>
+
