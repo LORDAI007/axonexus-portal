@@ -15,7 +15,7 @@
       text-align: center;
     }
     h1, h2, h3 { color: #f7c948; }
-    a.btn {
+    a.btn, button.btn {
       display: inline-block;
       margin: 8px;
       padding: 10px 20px;
@@ -25,8 +25,10 @@
       text-decoration: none;
       font-weight: bold;
       transition: transform .2s;
+      border: none;
+      cursor: pointer;
     }
-    a.btn:hover { transform: scale(1.03); }
+    a.btn:hover, button.btn:hover { transform: scale(1.03); }
     .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin: 20px 0; }
     .card {
       background: rgba(255,255,255,.05);
@@ -35,6 +37,12 @@
       padding: 20px;
       text-align: left;
     }
+    form label { display:block; margin: 10px 0 6px; color:#ddd; text-align:left; }
+    form input, form select, form textarea {
+      width:100%; padding:12px 14px; border-radius:10px;
+      border:1px solid #2a2a2a; background:#121212; color:#eee; outline:none;
+    }
+    form textarea { min-height:100px; resize: vertical; }
     footer {
       border-top: 1px solid rgba(247,201,72,.3);
       margin-top: 40px;
@@ -110,12 +118,28 @@
     <!-- === FORMULARIO OPERATIVO === -->
     <section id="cta-cert" style="max-width:800px;margin:auto;">
       <form id="axnx-lead" style="background:rgba(255,255,255,.04);border:1px solid #2a2a2a;border-radius:12px;padding:20px;text-align:left;">
-        <label>Nombre y cargo<input name="nombre" required placeholder="María Rivas — CTO" /></label><br>
-        <label>Institución / Empresa<input name="institucion" required placeholder="Municipalidad de X / Acme S.A." /></label><br>
-        <label>Correo electrónico<input type="email" name="email" required placeholder="maria@acme.com" /></label><br>
-        <label>Dominio / Endpoint<input name="dominio" required placeholder="https://api.acme.com" /></label><br>
-        <label>Plan<select name="plan"><option value="Básico">Básico</option><option value="Institucional">Institucional</option><option value="Soberano">Soberano</option></select></label><br>
-        <label>Notas<textarea name="notas" placeholder="Observaciones opcionales"></textarea></label><br>
+        <label>Nombre y cargo
+          <input name="nombre" required placeholder="María Rivas — CTO" type="text"/>
+        </label>
+        <label>Institución / Empresa
+          <input name="institucion" required placeholder="Municipalidad de X / Acme S.A." type="text"/>
+        </label>
+        <label>Correo electrónico
+          <input type="email" name="email" required placeholder="maria@acme.com"/>
+        </label>
+        <label>Dominio / Endpoint
+          <input name="dominio" required placeholder="https://api.acme.com" type="text"/>
+        </label>
+        <label>Plan
+          <select name="plan">
+            <option value="Básico">Básico</option>
+            <option value="Institucional">Institucional</option>
+            <option value="Soberano">Soberano</option>
+          </select>
+        </label>
+        <label>Notas
+          <textarea name="notas" placeholder="Observaciones opcionales"></textarea>
+        </label>
         <button id="lead-submit" class="btn" type="submit">Enviar solicitud</button>
         <a id="btn-mail-fallback" class="btn" href="#">Enviar por correo</a>
         <p id="lead-msg" style="display:none;color:#8ad27b;">✅ Solicitud recibida. Te contactaremos en 24–48 h.</p>
@@ -128,7 +152,8 @@
   <footer>© 2025 Axonexus — Certificación de Certeza Digital · Soberanía de Datos</footer>
 
   <script>
-  const N8N_WEBHOOK_URL = "https://TU_N8N_DOMINIO/webhook/certificado-lead"; // cambia esto
+  // Webhook de n8n (producción)
+  const N8N_WEBHOOK_URL = "http://45.77.93.113:5678/webhook/certificado/lead";
 
   const $ = (q) => document.querySelector(q);
   const form = $("#axnx-lead");
@@ -142,16 +167,21 @@
     const data = Object.fromEntries(new FormData(form).entries());
     const payload = {...data, ts: new Date().toISOString()};
 
+    // Fallback por correo (llega a contacto@axonexus.net, con reenvío a axonexus.ai@gmail.com si configuras alias)
     const to = "contacto@axonexus.net";
     const subject = encodeURIComponent("Solicitud: Certificado Axonexus de Certeza Digital");
-    const body = encodeURIComponent(`Hola Axonexus,%0A%0AQuiero iniciar la certificación:%0A${JSON.stringify(data,null,2)}`);
+    const body = encodeURIComponent(`Hola Axonexus,\n\nQuiero iniciar la certificación:\n${JSON.stringify(data,null,2)}\n\n— Enviado desde axonexus.net`);
     mailBtn.href = `mailto:${to}?subject=${subject}&body=${body}`;
 
     btn.disabled = true;
     btn.textContent = "Enviando...";
 
     try {
-      const r = await fetch(N8N_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+      const r = await fetch(N8N_WEBHOOK_URL,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload)
+      });
       if(!r.ok) throw new Error();
       ok.style.display="block"; err.style.display="none"; form.reset();
     } catch {
