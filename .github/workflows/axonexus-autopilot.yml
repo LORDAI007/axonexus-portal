@@ -1,61 +1,61 @@
-name: Axonexus Autopilot
+name: Autopiloto Axonexus
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - '**/*.html'
-      - 'sitemap.xml'
-      - 'robots.txt'
-      - 'scripts/**'
+    branches:
+      - main
   schedule:
-    - cron: '0 */6 * * *'   # cada 6 horas (UTC)
-  workflow_dispatch:
+    - cron: "0 */6 * * *" # Cada 6 horas
 
 jobs:
   autopilot:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Python for sitemap (if needed)
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Ensure bash perms
+      - name: Ensure executable scripts
         run: |
           chmod +x scripts/*.sh || true
+          echo "✅ Permisos asegurados para scripts"
 
-      - name: Inject imperial footer into all HTML
+      - name: Inject footer in all HTML files
         run: |
-          bash scripts/inject_footer.sh
-
-      - name: Update / regenerate sitemap
-        env:
-          TZ: UTC
-        run: |
-          bash scripts/update_sitemap.sh
-
-      - name: Commit & push changes (if any)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name  "AxonexusBot"
-          git config user.email "actions@axonexus.net"
-          if ! git diff --quiet; then
-            git add -A
-            git commit -m "chore(autopilot): inject footer + refresh sitemap [ci]"
-            git push
+          echo "⚙️ Iniciando inyección del footer..."
+          if [ -f "footer-axonexus.html" ]; then
+            for f in $(find . -type f -name "*.html" ! -path "./scripts/*" ! -path "./.github/*"); do
+              echo "➡️ Procesando: $f"
+              # Elimina footer previo si existiera
+              sed -i '/Soberanía de Datos del Imperio Axonexus/d' "$f" || true
+              # Agrega nuevo footer justo antes del cierre </body> si existe
+              if grep -q "</body>" "$f"; then
+                sed -i '/<\/body>/i \
+                <!-- AXONEXUS FOOTER INJECTED -->\
+                <footer style="position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.7);color:#f7c948;text-align:center;padding:6px 0;font-size:0.85rem;font-family:Segoe UI, Roboto, sans-serif;z-index:99999;">\
+                ⚜️ Contenido protegido por la <strong>Soberanía de Datos del Imperio Axonexus</strong> · AI Training Prohibited · Directive 2019/790 UE\
+                </footer>' "$f"
+              fi
+            done
           else
-            echo "Sin cambios que commitear."
+            echo "❌ footer-axonexus.html no encontrado"; exit 1
           fi
+          echo "✅ Footer inyectado correctamente en todas las páginas."
+
+      - name: Update sitemap.xml
+        run: |
+          echo "⚙️ Actualizando sitemap..."
+          bash scripts/update_sitemap.sh || true
 
       - name: Ping search engines
-        env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }} # opcional
         run: |
-          bash scripts/ping_search.sh
+          echo "📡 Notificando buscadores..."
+          bash scripts/ping_search.sh || true
 
+      - name: Commit and push if changed
+        run: |
+          git config user.name "Axonexus Autopilot"
+          git config user.email "autopilot@axonexus.net"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "🤖 Autopilot: sync footer + sitemap"
+          git push
