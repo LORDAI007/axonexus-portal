@@ -1,134 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>AXONEXUS — Imperio de la Gobernanza Predictiva</title>
-  <link rel="canonical" href="https://axonexus.net/"/>
-  <meta name="description" content="Imperio de Gobernanza Predictiva: datasets soberanos, ETLs, APIs, Prensa IA, Marco Legal y Supra-Human Data University."/>
-  <meta property="og:title" content="AXONEXUS — Imperio de la Gobernanza Predictiva"/>
-  <meta property="og:description" content="Corazón Soberano de datos, infraestructura y poder narrativo."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://axonexus.net/"/>
-  <meta property="og:image" content="https://axonexus.net/assets/og.jpg"/>
-  <meta name="theme-color" content="#0a0a0a"/>
-  <link rel="icon" href="/assets/favicon.png" type="image/png"/>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Axonexus",
-    "url":"https://axonexus.net",
-    "logo":"https://axonexus.net/assets/favicon.png",
-    "sameAs":[]
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axonexus — Imperio de la Gobernanza Predictiva</title>
+  <link rel="stylesheet" href="styles/style.css">
   <style>
-    :root{--bg:#0a0a0a;--fg:#fff;--muted:#c7c7c7;--gold:#f7c948;--card:#121212;--stroke:#1f1f1f}
-    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Ubuntu,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .topbar{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;gap:12px;padding:0 20px;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0));z-index:40}
-    .brand{font-weight:800;letter-spacing:.6px}.brand .gold{color:var(--gold)}
-    .spacer{flex:1}.icon-btn{width:40px;height:40px;border:1px solid var(--stroke);display:grid;place-items:center;border-radius:10px;background:#0f0f0f}
-    .burger,.burger:before,.burger:after{width:18px;height:2px;background:#fff;position:relative;display:block;content:""} .burger:before{position:absolute;left:0;top:-6px}.burger:after{position:absolute;left:0;top:6px}
-    .wrap{max-width:1100px;margin:0 auto;padding:96px 18px 36px}
-    h1{font-size:clamp(28px,6vw,64px);margin:8px 0 10px}
-    .lead{opacity:.9;line-height:1.6;max-width:880px}
-    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:26px 0 0}
-    .card{border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));padding:18px;border-radius:14px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
-    .card:hover{box-shadow:0 0 14px rgba(247,201,72,.25)}
-    .btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;border:1px solid var(--stroke);transition:.25s;background:#101010;color:#fff}
-    .btn:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 12px #f7c94855}
-    .gold{color:var(--gold)} footer{margin:36px 0 0;opacity:.6;font-size:.92rem}
-    .scrim{position:fixed;inset:0;background:#0008;opacity:0;pointer-events:none;transition:.25s;z-index:48}
-    .drawer{position:fixed;top:0;left:0;height:100vh;width:300px;max-width:86vw;background:#0d0d0d;border-right:1px solid var(--stroke);transform:translateX(-100%);transition:.3s ease;z-index:50;padding:18px}
-    .drawer.open{transform:none}.scrim.show{opacity:1;pointer-events:auto}
-    .nav-title{font-weight:800;margin:2px 0 14px}.nav-section{margin:14px 0 8px;color:var(--muted);font-size:.9rem}
-    .nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));margin-bottom:10px}
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px #f7c94877}
-    @media (min-width:920px){.icon-btn{display:none}}
+    body {
+      background-color: #0b0b0b;
+      color: #eaeaea;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid rgba(247,201,72,0.4);
+      padding: 16px 0;
+      text-align: center;
+    }
+    nav a {
+      color: #eaeaea;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f7c948;
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 {
+      color: #f7c948;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #ccc;
+      line-height: 1.6em;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(247,201,72,0.4);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 40px auto;
+      text-align: center;
+      max-width: 800px;
+      box-shadow: 0 0 12px rgba(247,201,72,0.15);
+    }
+    .card h2 {
+      color: #f7c948;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #ccc;
+    }
+    .button-gold {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 26px;
+      background: linear-gradient(90deg, #f7c948, #f0b400);
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(247,201,72,0.4);
+      transition: all 0.3s ease;
+    }
+    .button-gold:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(247,201,72,0.8);
+    }
+    footer {
+      border-top: 1px solid rgba(247,201,72,0.3);
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      margin-top: 60px;
+      font-size: 0.9em;
+    }
   </style>
-  <script>
-    (function(){try{
-      const t='axnx_pv',now=Date.now();let s=localStorage.getItem(t);
-      localStorage.setItem(t,s?(+s+1):1);
-      console.log('AXONEXUS pageview',now);
-    }catch(e){}})();
-  </script>
 </head>
+
 <body>
-  <header class="topbar" aria-label="Barra superior">
-    <div class="brand"><span class="gold">AXONEXUS</span> — Imperio</div>
-    <div class="spacer"></div>
-    <button class="icon-btn" id="openNav" aria-label="Abrir menú"><span class="burger"></span></button>
+  <header>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="arquitectura.html">Arquitectura</a>
+      <a href="economia.html">Economía</a>
+      <a href="prensa.html">Prensa</a>
+      <a href="jurisprudencia.html">Jurisprudencia</a>
+      <a href="universidad.html">Universidad</a>
+      <a href="sections/certificado.html" style="color:#f7c948;font-weight:600;">Certificado de Certeza Digital ⚜️</a>
+    </nav>
   </header>
 
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <div class="nav-title"><span class="gold">Axonexus</span> • Capas</div>
-    <div class="nav">
-      <div class="nav-section">Núcleo</div>
-      <a href="#" aria-disabled="true"><span class="dot"></span> Axonexus (Core)</a>
-      <div class="nav-section">Influencia</div>
-      <a href="#" aria-disabled="true"><span class="dot"></span> Prensa Descentralizada IA</a>
-      <div class="nav-section">Legitimidad</div>
-      <a href="#" aria-disabled="true"><span class="dot"></span> Marco Legal Estratégico</a>
-      <div class="nav-section">Legado</div>
-      <a href="universidad.html"><span class="dot"></span> Supra-Human Data University</a>
-      <div class="nav-section">Estado</div>
-      <a href="healthz.html"><span class="dot"></span> Health / Status</a>
-      <a href="index.html" style="margin-top:8px"><span class="dot"></span> Inicio</a>
-    </div>
-  </aside>
-  <div class="scrim" id="scrim" aria-hidden="true"></div>
+  <main>
+    <h1>Axonexus</h1>
+    <p>Imperio de la Gobernanza Predictiva · Inteligencia Algorítmica · Soberanía de Datos</p>
 
-  <main class="wrap">
     <section>
-      <h1><span class="gold">AXONEXUS</span> — Imperio de la Gobernanza Predictiva</h1>
-      <p class="lead">
-        Corazón Soberano de datos, infraestructura y poder narrativo. Integramos
-        <strong>datasets + ETLs + APIs</strong>, Prensa IA, Marco Legal y la Supra-Human Data University.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <strong>Axonexus (Core)</strong>
-          <p style="opacity:.85;margin:6px 0 0">Infra de datos y APIs soberanas.</p>
-          <a class="btn" href="#" aria-disabled="true">Pronto</a>
-        </div>
-        <div class="card">
-          <strong>Prensa Descentralizada IA</strong>
-          <p style="opacity:.85;margin:6px 0 0">Narrativa e influencia global.</p>
-          <a class="btn" href="#" aria-disabled="true">Pronto</a>
-        </div>
-        <div class="card">
-          <strong>Marco Legal Estratégico</strong>
-          <p style="opacity:.85;margin:6px 0 0">Jurisprudencia y legitimidad.</p>
-          <a class="btn" href="#" aria-disabled="true">Pronto</a>
-        </div>
-        <div class="card">
-          <strong>Supra-Human Data University</strong>
-          <p style="opacity:.85;margin:6px 0 0">Formación élite post-AGI.</p>
-          <a class="btn" href="universidad.html">Ingresar</a>
-        </div>
+      <div class="card">
+        <h2>⚙️ Axonexus Core</h2>
+        <p>Infraestructura soberana para la integración de datasets, APIs y trazabilidad predictiva.</p>
+        <a href="arquitectura.html" class="button-gold">Ver arquitectura →</a>
       </div>
 
-      <footer>© Axonexus · Soberanía de Datos</footer>
+      <div class="card">
+        <h2>📰 Prensa Descentralizada IA</h2>
+        <p>La Voz del Imperio: narrativa pública, legitimidad internacional y expansión de influencia.</p>
+        <a href="prensa.html" class="button-gold">Explorar Prensa →</a>
+      </div>
+
+      <div class="card">
+        <h2>⚖️ Marco Jurídico Axonexus</h2>
+        <p>El Escudo del Poder: jurisprudencia digital y legitimidad regulatoria soberana.</p>
+        <a href="jurisprudencia.html" class="button-gold">Ver Marco Legal →</a>
+      </div>
+
+      <div class="card">
+        <h2>🎓 Supra-Human Data University</h2>
+        <p>La Escuela de la Élite: formación avanzada en soberanía de datos e inteligencia algorítmica.</p>
+        <a href="universidad.html" class="button-gold">Ir a la Universidad →</a>
+      </div>
+
+      <!-- 💠 NUEVA SECCIÓN: Certificado de Certeza Digital -->
+      <div class="card" style="border:1px solid rgba(247,201,72,0.6);background:rgba(255,255,255,0.03);">
+        <h2>⚜️ Certificado Axonexus de Certeza Digital</h2>
+        <p>La primera certificación de confiabilidad algorítmica en América Latina.  
+        Monitoreo continuo, trazabilidad auditable y score público de Certeza (0–100).</p>
+        <a href="sections/certificado.html" class="button-gold">Ver detalles →</a>
+      </div>
     </section>
   </main>
 
-  <script>
-    const drawer=document.getElementById('drawer');
-    const scrim=document.getElementById('scrim');
-    const openBtn=document.getElementById('openNav');
-    function openDrawer(){drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');scrim.classList.add('show');scrim.setAttribute('aria-hidden','false')}
-    function closeDrawer(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');scrim.classList.remove('show');scrim.setAttribute('aria-hidden','true')}
-    openBtn.addEventListener('click',openDrawer);scrim.addEventListener('click',closeDrawer);
-    window.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
-  </script>
-      <!-- AXONEXUS FOOTER INJECTED -->
-      <footer style="position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.7);color:#f7c948;text-align:center;padding:6px 0;font-size:0.85rem;font-family:Segoe UI, Roboto, sans-serif;z-index:99999;">
-      ⚜️ Contenido protegido por la <strong>Soberanía de Datos del Imperio Axonexus</strong> · AI Training Prohibited · Directive 2019/790 UE
-      </footer>
+  <footer>
+    © 2025 Axonexus · Soberanía de Datos · Gobernanza Predictiva
+  </footer>
 </body>
 </html>
-
