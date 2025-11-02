@@ -1,0 +1,52 @@
+name: Autopiloto Axonexus
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "sitemap.xml"
+      - "robots.txt"
+      - "scripts/**"
+  schedule:
+    - cron: "0 */6 * * *"   # cada 6 horas (puedes ajustar)
+  workflow_dispatch:
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inyectar Sello Imperial (footer) en HTMLs
+        run: bash scripts/inject_footer.sh
+
+      - name: Regenerar sitemap.xml (lastmod=UTC y URLs clave)
+        run: bash scripts/update_sitemap.sh
+
+      - name: Commitear cambios si los hay
+        run: |
+          git config user.name  "AxonexusBot"
+          git config user.email "actions@axonexus.net"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore(autopilot): aplicar sello imperial y actualizar sitemap"
+            git push
+          else
+            echo "No hay cambios que commitear."
+          fi
+
+      - name: Ping a Google & Bing con sitemap
+        run: bash scripts/ping_search.sh
+
+      - name: Chequeo rápido de enlaces internos
+        run: bash scripts/link_check.sh
+
+      - name: Purge de caché (Cloudflare) opcional
+        if: ${{ env.CF_ZONE_ID != '' }}
+        env:
+          CF_ZONE_ID:     ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN:   ${{ secrets.CF_API_TOKEN }}
+        run: bash scripts/purge_cache.sh
