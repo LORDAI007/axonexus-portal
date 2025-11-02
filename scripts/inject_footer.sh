@@ -2,26 +2,37 @@
 set -euo pipefail
 
 FOOTER_FILE="footer-axonexus.html"
-FOOTER_SNIPPET='<!-- ⛨ Sello Imperial Axonexus --><footer style="position:fixed;left:0;right:0;bottom:0;width:100%;padding:7px 12px;background:rgba(0,0,0,.72);border-top:1px solid rgba(247,201,72,.3);color:#f7c948;text-align:center;font:600 13px/1.45 "Segoe UI", Roboto, system-ui, sans-serif;z-index:99999;">⚜️ Contenido protegido por la <strong>Soberanía de Datos del Imperio Axonexus</strong> · AI Training Prohibited · Directive 2019/790 UE</footer>'
+MARKER="<!-- axnx-footer -->"
 
-# Si existe un footer dedicado, úsalo
-if [[ -f "$FOOTER_FILE" ]]; then
-  FOOTER_SNIPPET="$(cat "$FOOTER_FILE")"
+if [[ ! -f "${FOOTER_FILE}" ]]; then
+  echo "❌ No encuentro ${FOOTER_FILE} en la raíz del repo"; exit 1
 fi
 
-mapfile -t FILES < <(git ls-files '*.html' | grep -v -E '(node_modules|dist|build|coverage)' || true)
+# Escapar contenido para sed
+FOOTER_ESCAPED=$(printf '%s\n' "${MARKER}\n$(cat "${FOOTER_FILE}")" | sed -e 's/[\/&]/\\&/g' -e 's/$/\\n/g')
 
-for f in "${FILES[@]}"; do
-  # Evitar duplicados
-  if grep -q "Sello Imperial Axonexus" "$f"; then
+# Iterar todos los .html excepto el propio footer
+while IFS= read -r -d '' file; do
+  # Saltar el archivo del footer
+  [[ "${file}" == *"/footer-axonexus.html" ]] && continue
+
+  # Evitar duplicados si ya hay marcador
+  if grep -q "${MARKER}" "${file}"; then
+    echo "↷ Ya inyectado: ${file}"
     continue
   fi
-  # Insertar el sello antes del cierre del body
-  if grep -qi '</body>' "$f"; then
-    perl -0777 -pe "s#</body>#$FOOTER_SNIPPET\n</body>#i" -i "$f"
-  else
-    printf "\n%s\n" "$FOOTER_SNIPPET" >> "$f"
-  fi
-done
 
-echo "✔ Sello Imperial inyectado correctamente en las páginas HTML."
+  if grep -qi '</body>' "${file}"; then
+    sed -i "s#</body>#${FOOTER_ESCAPED}\n</body>#I" "${file}"
+    echo "✅ Inyectado en: ${file}"
+  else
+    # Si no tiene </body>, lo anexamos al final
+    printf '\n%s\n' "${MARKER}" >> "${file}"
+    cat "${FOOTER_FILE}" >> "${file}"
+    echo "⚠️  Sin </body>, añadido al final: ${file}"
+  fi
+done < <(find . -type f -name "*.html" -print0)
+
+echo "✔ Inyección de footer completada."
+
+
