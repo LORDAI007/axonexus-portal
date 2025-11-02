@@ -1,61 +1,70 @@
-name: Autopiloto Axonexus
+#!/usr/bin/env bash
+set -euo pipefail
 
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: "0 */6 * * *" # Cada 6 horas
+echo "⚙️  AXONEXUS | Iniciando inyección de footer…"
 
-jobs:
-  autopilot:
-    runs-on: ubuntu-latest
+FOOTER_FILE="footer-axonexus.html"
+if [[ ! -f "$FOOTER_FILE" ]]; then
+  echo "❌ No se encontró $FOOTER_FILE en la raíz del repo."
+  exit 1
+fi
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+# Marcadores para inyección idempotente
+START_MARK="<!-- AXONEXUS FOOTER START -->"
+END_MARK="<!-- AXONEXUS FOOTER END -->"
 
-      - name: Ensure executable scripts
-        run: |
-          chmod +x scripts/*.sh || true
-          echo "✅ Permisos asegurados para scripts"
+# Colección de HTMLs (excluye .github/ y scripts/)
+mapfile -t HTMLS < <(find . -type f -name "*.html" \
+  ! -path "./.github/*" ! -path "./scripts/*" | sort)
 
-      - name: Inject footer in all HTML files
-        run: |
-          echo "⚙️ Iniciando inyección del footer..."
-          if [ -f "footer-axonexus.html" ]; then
-            for f in $(find . -type f -name "*.html" ! -path "./scripts/*" ! -path "./.github/*"); do
-              echo "➡️ Procesando: $f"
-              # Elimina footer previo si existiera
-              sed -i '/Soberanía de Datos del Imperio Axonexus/d' "$f" || true
-              # Agrega nuevo footer justo antes del cierre </body> si existe
-              if grep -q "</body>" "$f"; then
-                sed -i '/<\/body>/i \
-                <!-- AXONEXUS FOOTER INJECTED -->\
-                <footer style="position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.7);color:#f7c948;text-align:center;padding:6px 0;font-size:0.85rem;font-family:Segoe UI, Roboto, sans-serif;z-index:99999;">\
-                ⚜️ Contenido protegido por la <strong>Soberanía de Datos del Imperio Axonexus</strong> · AI Training Prohibited · Directive 2019/790 UE\
-                </footer>' "$f"
-              fi
-            done
-          else
-            echo "❌ footer-axonexus.html no encontrado"; exit 1
-          fi
-          echo "✅ Footer inyectado correctamente en todas las páginas."
+if [[ ${#HTMLS[@]} -eq 0 ]]; then
+  echo "ℹ️  No se encontraron archivos .html para procesar. Saliendo sin error."
+  exit 0
+fi
 
-      - name: Update sitemap.xml
-        run: |
-          echo "⚙️ Actualizando sitemap..."
-          bash scripts/update_sitemap.sh || true
+TOTAL=0; UPDATED=0
+for f in "${HTMLS[@]}"; do
+  TOTAL=$((TOTAL+1))
+  echo "➡️  Procesando: $f"
 
-      - name: Ping search engines
-        run: |
-          echo "📡 Notificando buscadores..."
-          bash scripts/ping_search.sh || true
+  # 1) Elimina cualquier inyección previa (entre marcadores)
+  if grep -q "$START_MARK" "$f"; then
+    # Elimina bloque previo entre START_MARK y END_MARK
+    awk -v s="$START_MARK" -v e="$END_MARK" '
+      BEGIN{skip=0}
+      index($0,s){skip=1}
+      !skip{print}
+      index($0,e){skip=0}
+    ' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+  else
+    # Por compatibilidad con versiones anteriores (línea simple)
+    sed -i '/Soberanía de Datos del Imperio Axonexus/d' "$f" || true
+  fi
 
-      - name: Commit and push if changed
-        run: |
-          git config user.name "Axonexus Autopilot"
-          git config user.email "autopilot@axonexus.net"
-          git add .
-          git diff-index --quiet HEAD || git commit -m "🤖 Autopilot: sync footer + sitemap"
-          git push
+  # 2) Construye el bloque de footer
+  FOOTER_BLOCK="$START_MARK
+<footer style=\"position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.7);color:#f7c948;text-align:center;padding:6px 0;font-size:0.85rem;font-family:Segoe UI, Roboto, sans-serif;z-index:99999;\">
+  ⚜️ Contenido protegido por la <strong>Soberanía de Datos del Imperio Axonexus</strong> · AI Training Prohibited · Directive 2019/790 UE
+</footer>
+$END_MARK"
+
+  # 3) Inserta antes de </body> si existe; si no, agrega al final
+  if grep -qi "</body>" "$f"; then
+    # Inserción antes de </body> (compatible con GNU sed)
+    sed -i "/<\/body>/I i $FOOTER_BLOCK" "$f" || {
+      # Fallback por si sed falla con líneas múltiples
+      awk -v block="$FOOTER_BLOCK" '
+        BEGIN{IGNORECASE=1}
+        /<\/body>/{print block}
+        {print}
+      ' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+    }
+  else
+    printf "\n%s\n" "$FOOTER_BLOCK" >> "$f"
+  fi
+
+  UPDATED=$((UPDATED+1))
+done
+
+echo "✅ Inyección completada. Archivos procesados: $TOTAL | Actualizados: $UPDATED"
+exit 0
