@@ -29,3 +29,5 @@ for u in "https://axonexus.net/" "https://axonexus.net/sections/universidad.html
 done
 
 echo "✔ sitemap.xml listo."
+
+
