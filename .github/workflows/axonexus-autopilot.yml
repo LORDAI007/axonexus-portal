@@ -1,15 +1,15 @@
-name: Autopiloto Axonexus
+name: Axonexus Autopilot
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
     paths:
-      - "**/*.html"
-      - "sitemap.xml"
-      - "robots.txt"
-      - "scripts/**"
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/**'
   schedule:
-    - cron: "0 */6 * * *"   # cada 6 horas (puedes ajustar)
+    - cron: '0 */6 * * *'   # cada 6 horas (UTC)
   workflow_dispatch:
 
 jobs:
@@ -20,33 +20,42 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Inyectar Sello Imperial (footer) en HTMLs
-        run: bash scripts/inject_footer.sh
+      - name: Setup Python for sitemap (if needed)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-      - name: Regenerar sitemap.xml (lastmod=UTC y URLs clave)
-        run: bash scripts/update_sitemap.sh
+      - name: Ensure bash perms
+        run: |
+          chmod +x scripts/*.sh || true
 
-      - name: Commitear cambios si los hay
+      - name: Inject imperial footer into all HTML
+        run: |
+          bash scripts/inject_footer.sh
+
+      - name: Update / regenerate sitemap
+        env:
+          TZ: UTC
+        run: |
+          bash scripts/update_sitemap.sh
+
+      - name: Commit & push changes (if any)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name  "AxonexusBot"
           git config user.email "actions@axonexus.net"
-          if [ -n "$(git status --porcelain)" ]; then
+          if ! git diff --quiet; then
             git add -A
-            git commit -m "chore(autopilot): aplicar sello imperial y actualizar sitemap"
+            git commit -m "chore(autopilot): inject footer + refresh sitemap [ci]"
             git push
           else
-            echo "No hay cambios que commitear."
+            echo "Sin cambios que commitear."
           fi
 
-      - name: Ping a Google & Bing con sitemap
-        run: bash scripts/ping_search.sh
-
-      - name: Chequeo rápido de enlaces internos
-        run: bash scripts/link_check.sh
-
-      - name: Purge de caché (Cloudflare) opcional
-        if: ${{ env.CF_ZONE_ID != '' }}
+      - name: Ping search engines
         env:
-          CF_ZONE_ID:     ${{ secrets.CF_ZONE_ID }}
-          CF_API_TOKEN:   ${{ secrets.CF_API_TOKEN }}
-        run: bash scripts/purge_cache.sh
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }} # opcional
+        run: |
+          bash scripts/ping_search.sh
+
