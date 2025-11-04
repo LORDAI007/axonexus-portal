@@ -20,6 +20,7 @@
   .muted{color:var(--muted)}
   input[type="file"],input[type="text"]{width:100%;background:#0e0e0e;border:1px solid #2a2a2a;border-radius:10px;padding:10px;color:#e8e8e8}
   .ok{color:#6ff2b7;font-weight:700} .bad{color:#ff9aa2;font-weight:700}
+  a { color: var(--gold); }
 </style>
 </head>
 <body>
@@ -28,18 +29,18 @@
       <div style="font-size:2rem">🎖️</div>
       <div>
         <h1>Certificado Axonexus de <span style="color:var(--gold)">Certeza Digital</span> — Nodo Cajamarca</h1>
-        <p class="muted">Estándar regional de trazabilidad, ética algorítmica y gobernanza predictiva.</p>
+        <p class="muted">Estándar peruano de trazabilidad, ética algorítmica y gobernanza predictiva.</p>
         <div>
-          <a class="btn btn-gold" href="https://axonexus.net/certificado-axonexus-certeza-digital_cajamarca.pdf" target="_blank">⬇️ Descargar PDF oficial</a>
+          <a class="btn btn-gold" href="assets/certificados/certificado-axonexus-certeza-digital_cajamarca.pdf" target="_blank">⬇️ Descargar PDF oficial</a>
           <a class="btn btn-hollow" href="#verificar">🔐 Verificar autenticidad</a>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h3 style="color:var(--gold);margin:8px 0">Emisiones iniciales</h3>
+      <h3 style="color:var(--gold);margin:8px 0">Emisión</h3>
       <p class="muted">ID: <span class="mono">AXO-CAJ-0001-2025</span> · Fecha: <span id="hoy" class="mono"></span> · Hash: <span id="hashOficial" class="mono">[pendiente]</span></p>
-      <p class="muted">Si el PDF aún no está subido, el botón mostrará 404 — súbelo con el nombre exacto: <span class="mono">certificado-axonexus-certeza-digital_cajamarca.pdf</span>.</p>
+      <p class="muted">Si el PDF aún no está subido, este botón mostrará 404 — usa ruta exacta: <span class="mono">/assets/certificados/certificado-axonexus-certeza-digital_cajamarca.pdf</span>.</p>
     </div>
 
     <div class="card" id="verificar">
@@ -55,28 +56,29 @@
       <div class="muted" style="margin-top:8px">Calculado: <span id="calc" class="mono">—</span></div>
     </div>
 
-    <div class="card" style="margin-top:30px;text-align:center;">
-      <h3 style="color:var(--gold);">CertChain Axonexus — Cajamarca</h3>
-      <p style="color:white;">Descargue o verifique la autenticidad del certificado oficial del Nodo Cajamarca.</p>
-      <a href="https://axonexus.net/certificado-axonexus-certeza-digital_cajamarca.pdf" 
-         target="_blank" 
-         class="btn btn-hollow" 
-         style="border:2px solid #f6b83f;color:#f6b83f;padding:10px 20px;text-decoration:none;font-weight:bold;">
-         🔗 Descargar PDF oficial
-      </a>
-      <p style="margin-top:10px;color:#ccc;">Verificación pública en: 
-         <a href="https://axonexus.net/sections/certificado-cajamarca.html" style="color:#f6b83f;">Axonexus CertChain — CAJ</a>
-      </p>
+    <div class="card">
+      <h3 style="color:var(--gold);margin:8px 0">Publicación y prueba de existencia</h3>
+      <ol class="muted">
+        <li>PDF oficial: <a href="assets/certificados/certificado-axonexus-certeza-digital_cajamarca.pdf">Ver certificado</a>.</li>
+        <li>Calcula el hash con:<br>
+          <span class="mono">shasum -a 256 assets/certificados/certificado-axonexus-certeza-digital_cajamarca.pdf</span>
+        </li>
+        <li>Pega el hash arriba (campo “Hash oficial esperado”) o publícalo en tu <span class="mono">README</span>.</li>
+      </ol>
+    </div>
+
+    <div class="card" style="text-align:center">
+      <h3 style="color:var(--gold);margin:8px 0">CertChain Axonexus</h3>
+      <p class="muted">Verificación pública de certificados del Instituto Soberano Axonexus.</p>
+      <a class="btn btn-gold" href="assets/certificados/certificado-axonexus-certeza-digital_cajamarca.pdf" target="_blank">🧾 Descargar PDF oficial</a>
     </div>
   </div>
 
 <script>
-const d=new Date();
-document.getElementById('hoy').textContent=[String(d.getDate()).padStart(2,'0'),String(d.getMonth()+1).padStart(2,'0'),d.getFullYear()].join('/');
+const d=new Date();document.getElementById('hoy').textContent=[String(d.getDate()).padStart(2,'0'),String(d.getMonth()+1).padStart(2,'0'),d.getFullYear()].join('/');
 async function sha256(buf){const h=await crypto.subtle.digest('SHA-256',buf);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
 async function verificar(){
-  const f=document.getElementById('f').files[0]; 
-  const exp=(document.getElementById('h').value||'').trim().toLowerCase();
+  const f=document.getElementById('f').files[0]; const exp=(document.getElementById('h').value||'').trim().toLowerCase();
   if(!f){alert('Sube el PDF');return}
   const calc=await sha256(await f.arrayBuffer());
   document.getElementById('calc').textContent=calc;
