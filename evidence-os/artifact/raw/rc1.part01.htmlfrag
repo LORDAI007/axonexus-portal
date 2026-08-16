@@ -1,0 +1,176 @@
+         </div>
+                <span class="font-mono text-[10px] text-steel-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded">CONCEPTUAL</span>
+              </div>
+
+              <div class="mb-4">
+                <span class="text-[10px] font-mono text-steel-400 uppercase tracking-wider block">SYNTHETIC EXAMPLE — NOT PRODUCTION DATA</span>
+              </div>
+
+              <!-- Illustrative Chain Pipeline -->
+              <div class="space-y-3 relative font-mono text-xs">
+                <!-- Source Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-white/10">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-steel-400 font-bold w-4">01</span>
+                    <span class="text-white font-medium">SOURCE</span>
+                    <span class="text-[10px] text-steel-400">[Telemetry / Contract / Model Log]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-steel-300">SOURCE IDENTIFIED</span>
+                </div>
+
+                <div class="w-px h-2.5 bg-white/20 mx-auto"></div>
+
+                <!-- Evidence Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-white/10">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-steel-400 font-bold w-4">02</span>
+                    <span class="text-white font-medium">EVIDENCE</span>
+                    <span class="text-[10px] text-steel-400">[Preserved Audit Record]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-accent-cyan">EVIDENCE LINKED</span>
+                </div>
+
+                <div class="w-px h-2.5 bg-white/20 mx-auto"></div>
+
+                <!-- Claim Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-white/10">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-steel-400 font-bold w-4">03</span>
+                    <span class="text-white font-medium">CLAIM</span>
+                    <span class="text-[10px] text-steel-400">[Assertion of Fact / Metric]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-steel-300">CLAIM MAPPED</span>
+                </div>
+
+                <div class="w-px h-2.5 bg-white/20 mx-auto"></div>
+
+                <!-- Decision Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-accent-blue/40 bg-accent-blue/5">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-accent-blue font-bold w-4">04</span>
+                    <span class="text-white font-semibold">DECISION</span>
+                    <span class="text-[10px] text-accent-blue/80">[Governance Authority]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-accent-blue">DECISION CONTEXT</span>
+                </div>
+
+                <div class="w-px h-2.5 bg-white/20 mx-auto"></div>
+
+                <!-- Action Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-white/10">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-steel-400 font-bold w-4">05</span>
+                    <span class="text-white font-medium">ACTION</span>
+                    <span class="text-[10px] text-steel-400">[Operational Execution]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-steel-300">ACTION RECORDED</span>
+                </div>
+
+                <div class="w-px h-2.5 bg-white/20 mx-auto"></div>
+
+                <!-- Result Node -->
+                <div class="flex items-center justify-between p-2.5 rounded bg-carbon-850 border border-white/15 bg-carbon-800/50">
+                  <div class="flex items-center gap-3">
+                    <span class="text-[10px] text-steel-300 font-bold w-4">06</span>
+                    <span class="text-white font-semibold">RESULT</span>
+                    <span class="text-[10px] text-steel-400">[Measurable Outcome]</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-steel-300">RESULT OBSERVED</span>
+                </div>
+              </div>
+
+              <!-- Terminal Status Line -->
+              <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-steel-400">
+                <span class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-steel-400"></span>
+                  ILLUSTRATIVE RECONSTRUCTION COMPLETE
+                </span>
+                <span class="text-steel-400 font-mono text-[10px]">CONCEPT MODEL</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: EL PROBLEMA -->
+    <!-- ========================================================================= -->
+    <section id="problema" class="py-24 bg-carbon-900 border-t border-b border-white/10 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-16">
+          <div class="text-xs font-mono text-accent-blue uppercase tracking-widest mb-3">EL DESAFÍO INSTITUCIONAL</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            Las organizaciones registran decisiones.<br />
+            <span class="text-steel-400">Pocas pueden reconstruirlas.</span>
+          </h2>
+          <p class="mt-4 text-base text-steel-300 leading-relaxed">
+            En operaciones críticas, la información que sustenta una resolución de directorio, una orden minera, una aprobación crediticia o un despliegue de infraestructura queda dispersa en silos desconectados.
+          </p>
+        </div>
+
+        <!-- Dispersal Matrix: Minimal Monochrome Line Icons -->
+        <div class="mb-14 p-6 rounded-lg bg-carbon-950 border border-white/10">
+          <div class="text-xs font-mono text-steel-400 uppercase mb-4 tracking-wider">ANATOMÍA DE LA DISPERSIÓN DE EVIDENCIA:</div>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 font-mono text-xs">
+            
+            <!-- Documentos -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+              <span>Documentos</span>
+            </div>
+
+            <!-- Correos -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
+              <span>Correos</span>
+            </div>
+
+            <!-- Sistemas -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.75 5.1a1.5 1.5 0 011.2-.6h10.1a1.5 1.5 0 011.2.6l2.1 3.45a4.5 4.5 0 01.9 2.7"></path></svg>
+              <span>Sistemas</span>
+            </div>
+
+            <!-- Aprobaciones -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span>Aprobaciones</span>
+            </div>
+
+            <!-- Modelos de IA -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"></path></svg>
+              <span>Modelos de IA</span>
+            </div>
+
+            <!-- Contratos -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path></svg>
+              <span>Contratos</span>
+            </div>
+
+            <!-- Personas -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path></svg>
+              <span>Personas</span>
+            </div>
+
+            <!-- Logs -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"></path></svg>
+              <span>Logs</span>
+            </div>
+
+            <!-- Versiones -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span>Versiones</span>
+            </div>
+
+            <!-- Datos Operativos -->
+            <div class="p-3 bg-carbon-900 border border-white/5 rounded text-steel-300 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-steel-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.
