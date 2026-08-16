@@ -1,0 +1,44 @@
+name: Materialize Evidence OS RC1 Preview
+
+on:
+  push:
+    branches:
+      - deploy/axonexus-evidence-os-rc1
+    paths:
+      - 'evidence-os/artifact/raw/**'
+      - '.github/workflows/materialize-evidence-os-rc1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v4
+
+      - name: Materialize approved RC1
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence-os
+          cat evidence-os/artifact/raw/rc1.part*.htmlfrag > evidence-os/index.html
+          echo "0690628d9745e27f0948404b0e64ef9e9a3d9a9c3303e7941700bd2602b7f000  evidence-os/index.html" | sha256sum -c -
+          test "$(wc -c < evidence-os/index.html | tr -d ' ')" = "96312"
+
+      - name: Commit materialized product route
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- evidence-os/index.html && git ls-files --error-unmatch evidence-os/index.html >/dev/null 2>&1; then
+            echo "RC1 already materialized; no commit required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence-os/index.html
+          git commit -m "deploy: materialize AXN-WEB-LANDING-001 RC1 preview"
+          git push
