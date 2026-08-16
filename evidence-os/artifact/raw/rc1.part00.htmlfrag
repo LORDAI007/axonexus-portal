@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axonexus Evidence OS | Algorithmic Verifiability & Defensible Decision Infrastructure</title>
+  <meta name="description" content="Infraestructura de evidencia, trazabilidad y verificabilidad para decisiones críticas que deben prepararse para comités, auditorías, reguladores, contratos e incidentes.">
+  <meta name="keywords" content="verificabilidad algorítmica, trazabilidad de decisiones, evidencia defendible, gobernanza de IA, auditoría, assurance">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN: acceptable for private demo / release candidate.
+       TODO before high-assurance production deployment: compile Tailwind locally and remove runtime CDN dependency. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            carbon: {
+              950: '#060709',
+              900: '#0A0B0E',
+              850: '#0F1117',
+              800: '#141820',
+              700: '#1F2430',
+              600: '#2D3444'
+            },
+            steel: {
+              400: '#94A3B8',
+              300: '#CBD5E1',
+              200: '#E2E8F0',
+              100: '#F1F5F9'
+            },
+            accent: {
+              blue: '#0066FF',
+              cyan: '#00E5FF',
+              petrol: '#0A2540',
+              emerald: '#00F090',
+              amber: '#F59E0B',
+              crimson: '#EF4444'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::selection {
+      background: #0066FF;
+      color: #FFFFFF;
+    }
+    
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .hairline-border {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hairline-border-b {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glow-blue {
+      box-shadow: 0 0 25px -5px rgba(0, 102, 255, 0.25);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0B0E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2430;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2D3444;
+    }
+  </style>
+</head>
+<!-- AXN-WEB-LANDING-001 | RC1 | PRIVATE DEMO READY | PUBLICATION REQUIRES HUMAN GO -->
+<body class="bg-carbon-950 text-steel-200 font-sans antialiased overflow-x-hidden selection:bg-accent-blue selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- NAVIGATION BAR -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-carbon-950/85 backdrop-blur-md hairline-border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Identity -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-7 h-7 bg-carbon-900 border border-white/20 rounded flex items-center justify-center relative overflow-hidden group-hover:border-accent-cyan transition-colors duration-300">
+          <div class="w-2.5 h-2.5 bg-accent-blue rounded-xs"></div>
+          <div class="absolute inset-0 bg-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-widest text-white uppercase font-mono">AXONEXUS</span>
+          <span class="text-[9px] tracking-wider text-steel-400 font-mono uppercase -mt-1">Evidence OS</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wide text-steel-400">
+        <a href="#problema" class="hover:text-white transition-colors duration-200">PROBLEMA</a>
+        <a href="#arquitectura" class="hover:text-white transition-colors duration-200">ARQUITECTURA</a>
+        <a href="#capacidades" class="hover:text-white transition-colors duration-200">CAPACIDADES</a>
+        <a href="#workflow" class="hover:text-white transition-colors duration-200">WORKFLOW</a>
+        <a href="#casos-de-uso" class="hover:text-white transition-colors duration-200">CASOS DE USO</a>
+        <a href="#principios" class="hover:text-white transition-colors duration-200">PRINCIPIOS</a>
+        <a href="#productos" class="hover:text-white transition-colors duration-200">PRODUCTOS</a>
+      </nav>
+
+      <!-- Institutional CTA Button -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openDiagnosticModal()" class="text-xs font-mono px-4 py-2 bg-white text-carbon-950 font-semibold rounded hover:bg-steel-200 transition-all duration-200 shadow-sm flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-blue"></span>
+          SOLICITAR DIAGNÓSTICO
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-steel-400 hover:text-white p-2" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-carbon-900 border-b border-white/10 px-6 py-5 flex flex-col gap-4 font-mono text-xs text-steel-300">
+      <a href="#problema" class="py-1 hover:text-white">PROBLEMA</a>
+      <a href="#arquitectura" class="py-1 hover:text-white">ARQUITECTURA</a>
+      <a href="#capacidades" class="py-1 hover:text-white">CAPACIDADES</a>
+      <a href="#workflow" class="py-1 hover:text-white">WORKFLOW</a>
+      <a href="#casos-de-uso" class="py-1 hover:text-white">CASOS DE USO</a>
+      <a href="#principios" class="py-1 hover:text-white">PRINCIPIOS</a>
+      <a href="#productos" class="py-1 hover:text-white">PRODUCTOS</a>
+      <button onclick="openDiagnosticModal()" class="mt-2 text-center py-2.5 bg-white text-carbon-950 font-semibold rounded">
+        SOLICITAR DIAGNÓSTICO
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: HERO SECTION -->
+    <!-- ========================================================================= -->
+    <section class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 bg-grid-pattern overflow-hidden">
+      <!-- Ambient Radial Backlight -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent-blue/10 blur-[130px] pointer-events-none rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Left Column: Value Proposition -->
+          <div class="lg:col-span-7 space-y-7">
+            <!-- Institutional Badge: Precision Hardened -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-white/10 bg-carbon-900/90 backdrop-blur font-mono text-xs text-steel-300">
+              <span class="w-2 h-2 rounded-full bg-accent-blue"></span>
+              <span class="tracking-widest uppercase font-semibold text-white">AXONEXUS EVIDENCE OS</span>
+              <span class="text-steel-400">|</span>
+              <span class="text-steel-400">EVIDENCE &amp; DECISION INFRASTRUCTURE</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+              Make critical decisions <br class="hidden sm:inline" />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-steel-200 to-steel-400">defensible.</span>
+            </h1>
+
+            <!-- Subheadline in Spanish -->
+            <p class="text-base sm:text-lg text-steel-300 font-normal leading-relaxed max-w-2xl">
+              Infraestructura de evidencia, trazabilidad y verificabilidad para decisiones que deben sobrevivir auditorías, reguladores, comités, contratos e incidentes críticos.
+            </p>
+
+            <!-- CTA Actions -->
+            <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <button onclick="openDiagnosticModal()" class="px-6 py-3.5 bg-white text-carbon-950 font-semibold text-sm rounded hover:bg-steel-200 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-white/5 font-mono">
+                <span>Solicitar diagnóstico</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+
+              <a href="#workflow" class="px-6 py-3.5 bg-carbon-900 text-steel-200 border border-white/15 font-mono text-sm rounded hover:bg-carbon-800 hover:text-white transition-all duration-200 flex items-center justify-center gap-2">
+                <span>Ver cómo funciona</span>
+                <svg class="w-4 h-4 text-steel-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+            </div>
+
+            <!-- Conceptual Chain Line -->
+            <div class="pt-6 border-t border-white/10">
+              <div class="text-[11px] font-mono text-steel-400 flex items-center gap-2 flex-wrap">
+                <span class="text-white font-medium">CORE PIPELINE:</span>
+                <span class="text-steel-300">Evidence</span>
+                <span class="text-accent-blue">→</span>
+                <span class="text-steel-300">Claim</span>
+                <span class="text-accent-blue">→</span>
+                <span class="text-steel-300">Uncertainty</span>
+                <span class="text-accent-blue">→</span>
+                <span class="text-steel-300">Decision</span>
+                <span class="text-accent-blue">→</span>
+                <span class="text-steel-300">Action</span>
+                <span class="text-accent-blue">→</span>
+                <span class="text-white font-semibold">Result</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Decision Chain Demo (Explicitly Illustrative) -->
+          <div class="lg:col-span-5">
+            <div class="bg-carbon-900/90 border border-white/15 rounded-lg p-6 relative overflow-hidden backdrop-blur-xl glow-blue">
+              
+              <!-- Top Demo Bar -->
+              <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 rounded-full bg-steel-400"></div>
+                  <span class="font-mono text-[11px] text-steel-300 tracking-wider font-semibold">ILLUSTRATIVE EVIDENCE CHAIN</span>
+        
