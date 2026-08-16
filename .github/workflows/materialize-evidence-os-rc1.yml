@@ -25,7 +25,17 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p evidence-os
-          cat evidence-os/artifact/raw/rc1.part*.htmlfrag > evidence-os/index.html
+          {
+            head -c 12023 evidence-os/artifact/raw/rc1.part00.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part01.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part02.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part03.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part04.htmlfrag
+            head -c 12063 evidence-os/artifact/raw/rc1.part05.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part06.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part07.htmlfrag
+            cat evidence-os/artifact/raw/rc1.part08.htmlfrag
+          } > evidence-os/index.html
           echo "0690628d9745e27f0948404b0e64ef9e9a3d9a9c3303e7941700bd2602b7f000  evidence-os/index.html" | sha256sum -c -
           test "$(wc -c < evidence-os/index.html | tr -d ' ')" = "96312"
 
