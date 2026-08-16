@@ -1,0 +1,242 @@
+16 text-steel-400 font-mono text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+        
+        <!-- Brand Summary Column -->
+        <div class="col-span-2 space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 bg-carbon-900 border border-white/20 rounded flex items-center justify-center">
+              <div class="w-2 h-2 bg-accent-blue"></div>
+            </div>
+            <span class="text-white font-bold tracking-widest uppercase">AXONEXUS EVIDENCE OS</span>
+          </div>
+          <p class="text-xs text-steel-400 font-sans leading-relaxed max-w-sm">
+            Infraestructura privada de confianza para la verificabilidad algorítmica, auditoría y defendibilidad de decisiones críticas.
+          </p>
+          <div class="text-[11px] text-steel-400">
+            Verifiability · Traceability · Assurance · AI Governance
+          </div>
+        </div>
+
+        <!-- Column: Navigation -->
+        <div>
+          <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Plataforma</div>
+          <ul class="space-y-2">
+            <li><a href="#arquitectura" class="hover:text-white transition-colors">Evidence OS</a></li>
+            <li><a href="#capacidades" class="hover:text-white transition-colors">Capacidades</a></li>
+            <li><a href="#workflow" class="hover:text-white transition-colors">Workflow</a></li>
+            <li><a href="#principios" class="hover:text-white transition-colors">Axiomas</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Sectores -->
+        <div>
+          <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Sectores</div>
+          <ul class="space-y-2">
+            <li><a href="#casos-de-uso" class="hover:text-white transition-colors">Mining</a></li>
+            <li><a href="#casos-de-uso" class="hover:text-white transition-colors">Financial Services</a></li>
+            <li><a href="#casos-de-uso" class="hover:text-white transition-colors">AI Governance</a></li>
+            <li><a href="#casos-de-uso" class="hover:text-white transition-colors">Infrastructure</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Productos -->
+        <div>
+          <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Productos</div>
+          <ul class="space-y-2">
+            <li><a href="#productos" class="hover:text-white transition-colors">Evidence OS</a></li>
+            <li><a href="#productos" class="hover:text-white transition-colors">NPJ Methodology</a></li>
+            <li><a href="#productos" class="hover:text-white transition-colors">Axonexus Assurance</a></li>
+            <li><a href="#productos" class="hover:text-white transition-colors">Data Room Audit</a></li>
+          </ul>
+        </div>
+
+        <!-- Column: Contacto Institucional -->
+        <div>
+          <div class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Contacto</div>
+          <div class="space-y-2 text-steel-400">
+            <div class="text-steel-300 font-semibold">CONTACTO INSTITUCIONAL</div>
+            <a href="mailto:contacto@axonexus.net?subject=Solicitud%20de%20diagn%C3%B3stico%20%E2%80%94%20Axonexus%20Evidence%20OS" class="text-accent-blue hover:underline text-[11px] break-all">contacto@axonexus.net</a>
+            <button onclick="openDiagnosticModal()" class="text-accent-blue hover:underline text-[11px] block mt-1">Solicitar información →</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-steel-400">
+        <div>
+          © <span id="currentYear"></span> AXONEXUS EVIDENCE OS. Todos los derechos reservados.
+        </div>
+        <div class="flex items-center gap-6">
+          <span>NPJ VERIFICATION METHODOLOGY</span>
+          <span>EVIDENCE · TRACEABILITY · ASSURANCE</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: DIAGNOSTIC SESSION REQUEST (Pre-launch / Configuration Mode) -->
+  <!-- ========================================================================= -->
+  <div id="diagnosticModal" class="fixed inset-0 z-50 bg-carbon-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-carbon-900 border border-white/20 rounded-xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl glow-blue">
+      
+      <!-- Close Button -->
+      <button onclick="closeDiagnosticModal()" class="absolute top-4 right-4 text-steel-400 hover:text-white p-1" aria-label="Cerrar modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6">
+        <div class="inline-block font-mono text-[10px] text-accent-blue border border-accent-blue/30 bg-accent-blue/5 px-2 py-0.5 rounded uppercase tracking-widest mb-2 font-bold">
+          CANAL DE DIAGNÓSTICO // ACTIVO
+        </div>
+        <h3 class="text-xl font-bold text-white">Solicitar sesión de diagnóstico</h3>
+        <p class="text-xs text-steel-300 mt-2 leading-relaxed">
+          Coordine una sesión preliminar mediante el canal institucional verificado de Axonexus. No incluya información confidencial, sensible o regulada en el primer contacto.
+        </p>
+      </div>
+
+      <!-- Real institutional contact channel. No fake form submission. -->
+      <div class="space-y-5 font-mono text-xs">
+        <div class="p-4 rounded bg-carbon-950 border border-white/10">
+          <div class="text-[10px] text-steel-400 uppercase tracking-wider mb-1">CANAL INSTITUCIONAL VERIFICADO</div>
+          <a href="mailto:contacto@axonexus.net" class="text-sm text-white hover:text-accent-cyan transition-colors break-all">contacto@axonexus.net</a>
+        </div>
+
+        <a href="mailto:contacto@axonexus.net?subject=Solicitud%20de%20diagn%C3%B3stico%20%E2%80%94%20Axonexus%20Evidence%20OS&body=Hola%20Axonexus%2C%0A%0AQuisiera%20coordinar%20una%20sesi%C3%B3n%20preliminar%20de%20diagn%C3%B3stico.%0A%0ANombre%3A%0AOrganizaci%C3%B3n%3A%0ASector%3A%0ATipo%20de%20decisi%C3%B3n%20o%20proceso%20a%20revisar%3A%0A%0ANo%20incluyo%20informaci%C3%B3n%20confidencial%20en%20este%20primer%20contacto.%0A" class="w-full py-3 bg-white text-carbon-950 font-bold rounded hover:bg-steel-200 transition-colors uppercase tracking-wider text-xs flex items-center justify-center gap-2">
+          <span>Iniciar solicitud por correo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+
+        <div class="p-3 rounded border border-white/10 bg-carbon-950/60 text-[10px] text-steel-400 leading-relaxed">
+          Primer contacto recomendado: nombre, organización, sector y tipo de decisión o proceso a revisar. No incluya información confidencial, sensible o regulada. La confidencialidad aplicable deberá acordarse expresamente cuando corresponda.
+        </div>
+
+        <!-- TODO: CONNECT VERIFIED CRM/FORM ENDPOINT BEFORE ADDING IN-PAGE DATA CAPTURE -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: INTERACTIONS & DEMO LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(anchor => {
+      anchor.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Architecture Pipeline Nodes Inspector
+    const pipelineNodes = document.querySelectorAll('.pipeline-node');
+    const inspectorTitle = document.getElementById('inspectorTitle');
+    const inspectorDesc = document.getElementById('inspectorDesc');
+
+    pipelineNodes.forEach(node => {
+      node.addEventListener('mouseenter', () => {
+        const title = node.getAttribute('data-title');
+        const desc = node.getAttribute('data-desc');
+        inspectorTitle.textContent = title;
+        inspectorDesc.textContent = desc;
+
+        pipelineNodes.forEach(n => n.classList.remove('border-accent-blue', 'bg-carbon-800'));
+        node.classList.add('border-accent-blue', 'bg-carbon-800');
+      });
+    });
+
+    // Simulated Verification Workflow Interactive Switcher
+    const simulationStates = {
+      contract: {
+        source: 'Contract.pdf [Cláusula Operativa 14.2]',
+        claim: '"El contratista debe operar en umbral de 42.5 MW"',
+        decision: 'Aprobación de sobrepaso temporal por Gerencia Técnica',
+        action: 'Ajuste de turbina registrado a las 14:32 UTC'
+      },
+      board: {
+        source: 'Board Resolution.pdf [Acta Directorial #112]',
+        claim: '"Límite de exposición asignado a $40M USD"',
+        decision: 'Rebalanceo de tesorería y cobertura de derivados',
+        action: 'Ejecución de orden registrada en mesa autorizada'
+      },
+      telemetry: {
+        source: 'Operational Log [Sensor Piezómetro T-08]',
+        claim: '"Nivel freático reportado a 12.4m bajo cota"',
+        decision: 'Continuidad de secuencia operacional según protocolo',
+        action: 'Registro de telemetría archivado para revisión'
+      },
+      model: {
+        source: 'Model Output [Inference Run #4]',
+        claim: '"Evaluación de riesgo crediticio generada por modelo"',
+        decision: 'Revisión por comité de riesgo con registro de excepción',
+        action: 'Emisión de reporte de evaluación asociado'
+      },
+      approval: {
+        source: 'Approval Record [Oficial de Cumplimiento]',
+        claim: '"Registro de autorización de excepción normativa"',
+        decision: 'Autorización de despacho de fondos',
+        action: 'Registro de ejecución documentado en expediente'
+      }
+    };
+
+    function selectSource(key) {
+      ['contract', 'board', 'telemetry', 'model', 'approval'].forEach(k => {
+        const el = document.getElementById(`src-${k}`);
+        if (k === key) {
+          el.classList.add('border-accent-blue', 'bg-carbon-800');
+        } else {
+          el.classList.remove('border-accent-blue', 'bg-carbon-800');
+        }
+      });
+
+      const data = simulationStates[key];
+      if (data) {
+        document.getElementById('graphSourceVal').textContent = data.source;
+        document.getElementById('graphClaimVal').textContent = data.claim;
+        document.getElementById('graphDecisionVal').textContent = data.decision;
+        document.getElementById('graphActionVal').textContent = data.action;
+      }
+    }
+
+    // Modal Control Functions
+    const modal = document.getElementById('diagnosticModal');
+
+    function openDiagnosticModal() {
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeDiagnosticModal() {
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeDiagnosticModal();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeDiagnosticModal();
+      }
+    });
+  </script>
